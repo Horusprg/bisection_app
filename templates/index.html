@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bisection Method Calculator</title>
+    <link rel="stylesheet" href="https://unpkg.com/mathlive/dist/mathlive.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.4.4/math.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <div class="calculator-container">
+            <h1>Bisection Method Calculator</h1>
+            <form id="bisection-form">
+                <label for="function">Enter a function:</label>
+                <math-field id="function" virtual-keyboard-mode="onfocus" placeholder="e.g. x^2 - 2" required></math-field>
+                
+                <label for="a">Lower bound of the interval (a):</label>
+                <input type="number" id="a" name="a" required>
+                
+                <label for="b">Upper bound of the interval (b):</label>
+                <input type="number" id="b" name="b" required>
+                
+                <label for="tolerance">Tolerance of the method:</label>
+                <input type="number" step="0.000001" id="tolerance" name="tolerance" value="1E-06" required>
+                
+                <label for="max_iter">Maximum number of iterations:</label>
+                <input type="number" id="max_iter" name="max_iter" value="100" required>
+                <div id="form-button" style="text-align: center;">
+                    <button type="submit">Find Root</button>
+                </div>
+            </form>
+            <div id="result"><b>Result:</b></div>
+        </div>
+
+        <div class="plot-container">
+            <h2>Function Plot</h2>
+            <div id="plot"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/mathlive/dist/mathlive.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/latex-to-js.js') }}"></script>
+</body>
+</html>
